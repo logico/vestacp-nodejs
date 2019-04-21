@@ -1,0 +1,50 @@
+server {
+    listen      %ip%:%proxy_port%;
+    server_name %domain_idn%
+    return      301 https://%domain_idn%$request_uri;
+}
+server {
+    listen      %ip%:%proxy_ssl_port%  http2 ssl;
+    server_name %domain_idn%;
+    ssl_certificate      %ssl_pem%;
+    ssl_certificate_key  %ssl_key%;
+    error_log  /var/log/%web_system%/domains/%domain%.error.log error;
+    gzip on;
+    gzip_min_length  1100;
+    gzip_buffers  4 32k;
+    gzip_types    image/svg+xml svg svgz text/plain application/x-javascript text/xml text/css;
+    gzip_vary on;
+
+    location / {
+    	proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
+	proxy_set_header X-Real-IP $remote_addr;
+	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	proxy_set_header Host $host;
+	proxy_set_header X-NginX-Proxy true;
+        location ~* ^.+\.(%proxy_extentions%)$ {
+            root           %sdocroot%;
+            access_log     /var/log/%web_system%/domains/%domain%.log combined;
+            access_log     /var/log/%web_system%/domains/%domain%.bytes bytes;
+            expires        max;
+            try_files      $uri @fallback;
+	    add_header Pragma public;
+            add_header Cache-Control "public";
+        }
+    }
+
+    location /error/ {
+        alias   %home%/%user%/web/%domain%/document_errors/;
+    }
+
+    location @fallback {
+        proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
+    }
+
+    location ~ /\.ht    {return 404;}
+    location ~ /\.svn/  {return 404;}
+    location ~ /\.git/  {return 404;}
+    location ~ /\.hg/   {return 404;}
+    location ~ /\.bzr/  {return 404;}
+
+    include %home%/%user%/conf/web/s%proxy_system%.%domain%.conf*;
+}
