@@ -16,7 +16,7 @@ server {
     gzip_vary on;
 
     location / {
-    	proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
+    	proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
 	proxy_set_header X-Real-IP $remote_addr;
 	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 	proxy_set_header Host $host;

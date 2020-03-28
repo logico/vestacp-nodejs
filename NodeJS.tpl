@@ -4,7 +4,7 @@ server {
     error_log  /var/log/httpd/domains/%domain%.error.log error;
 
     location / {
-        proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
+        proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
         location ~* ^.+\.(%proxy_extentions%)$ {
             root           %docroot%;
             access_log     /var/log/httpd/domains/%domain%.log combined;
