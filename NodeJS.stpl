@@ -16,18 +16,18 @@ server {
     gzip_vary on;
 
     location / {
-    	proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
-	proxy_set_header X-Real-IP $remote_addr;
-	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	proxy_set_header Host $host;
-	proxy_set_header X-NginX-Proxy true;
+        proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_set_header X-NginX-Proxy true;
         location ~* ^.+\.(%proxy_extentions%)$ {
             root           %sdocroot%;
             access_log     /var/log/%web_system%/domains/%domain%.log combined;
             access_log     /var/log/%web_system%/domains/%domain%.bytes bytes;
             expires        max;
             try_files      $uri @fallback;
-	    add_header Pragma public;
+        add_header Pragma public;
             add_header Cache-Control "public";
         }
     }
