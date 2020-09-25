@@ -6,8 +6,9 @@ ip=$3
 home=$4
 docroot=$5
 
+mkdir "$home/$user/web/$domain/nodeapp"
+chown -R $user:$user "$home/$user/web/$domain/nodeapp"
 rm "$home/$user/web/$domain/nodeapp/app.sock"
-runuser -l $user -c "NODE_ENV=production pm2 restart $home/$user/web/$domain/nodeapp/app"
+runuser -l $user -c "pm2 start $home/$user/web/$domain/nodeapp/app.js"
 sleep 5
-chmod a+w "$home/$user/web/$domain/nodeapp/app.sock"
-
+chmod 777 "$home/$user/web/$domain/nodeapp/app.sock"
