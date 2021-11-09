@@ -5,7 +5,7 @@ server {
 
     location / {
         proxy_pass      http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
-        location ~* ^.+\.(%proxy_extentions%)$ {
+        location ~* ^.+\.(%proxy_extensions%)$ {
             root           %docroot%;
             access_log     /var/log/%web_system%/domains/%domain%.log combined;
             access_log     /var/log/%web_system%/domains/%domain%.bytes bytes;
