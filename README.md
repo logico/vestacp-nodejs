@@ -10,6 +10,7 @@ Run Node.JS web apps automatically using NGINX reverse proxy, UNIX sockets and P
 - The app must listen on a UNIX socket in `/home/user/web/domain/nodeapp/app.sock`
 - Upload `NodeJS.tpl`, `NodeJS.stpl`, `NodeJS.sh` to `/usr/local/vesta/data/templates/web/nginx/` or run `install.sh`
 - In the control panel, select NodeJS from Proxy Template
+- If you install NVM for different version of Node script read `.nvm`, `.node-version` file from node app folder auto install it an run whith specify version
 
 ![VestaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
@@ -22,6 +23,7 @@ Run Node.JS web apps automatically using NGINX reverse proxy, UNIX sockets and P
 
 * Remove all instances: `runuser -l <user> -c "pm2 del all"` for admin `runuser -l admin -c "pm2 del all"`
 * List all instances: `runuser -l <user> -c "pm2 list"` for admin `runuser -l admin -c "pm2 list"`
+* Show monitor of instances: `runuser -l <user> -c "pm2 monit"` for admin `runuser -l admin -c "pm2 monit"`
 
 
 #### Documentation
