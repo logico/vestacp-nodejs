@@ -16,6 +16,7 @@ chown -R $user:$user $nodeDir
 nodeVersion=""
 nvmDir="/opt/nvm"
 nodeInterpreter=""
+envFile=""
 
 #if are installed .nvm on the system
 if [ -d "$nvmDir" ]; then
@@ -73,9 +74,12 @@ fi
 rm "$nodeDir/app.sock"
 runuser -l $user -c "pm2 del $scriptName"
 
+#apply enviroment variables from .env file
+if [ -f "$nodeDir/.env" ]; then
+    echo ".env file in folder, applying"
+    envFile=$(grep -v '^#' $nodeDir/.env | xargs)
+fi
+
 #remove blank spaces
 pmPath=$(echo "$nodeDir/$mainScript" | tr -d ' ')
-runuser -l $user -c "PWD=$nodeDir NODE_ENV=produciton pm2 start $pmPath --name $scriptName $nodeInterpreter"
-
-sleep 5
-chmod 777 "$nodeDir/app.sock"
+runuser -l $user -c "$envFile PWD=$nodeDir NODE_ENV=production pm2 start $pmPath --name $scriptName --watch $nodeInterpreter"
