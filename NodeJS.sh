@@ -82,4 +82,7 @@ fi
 
 #remove blank spaces
 pmPath=$(echo "$nodeDir/$mainScript" | tr -d ' ')
-runuser -l $user -c "$envFile PWD=$nodeDir NODE_ENV=production pm2 start $pmPath --name $scriptName --watch $nodeInterpreter"
+runuser -l $user -c "$envFile PWD=$nodeDir NODE_ENV=production pm2 start $pmPath --name $scriptName $nodeInterpreter"
+
+sleep 5
+chmod 777 "$nodeDir/app.sock"

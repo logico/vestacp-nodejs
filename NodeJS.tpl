@@ -1,12 +1,13 @@
 server {
     listen      %ip%:%proxy_port%;
     server_name %domain_idn% %alias_idn%;
+
     error_log  /var/log/%web_system%/domains/%domain%.error.log error;
 
     location / {
-        #proxy_pass http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
-        proxy_pass http://127.0.0.1:3000;
-            proxy_redirect off;
+        proxy_pass http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:$request_uri;
+        #proxy_pass http://unix:%home%/%user%/web/.pm2/pub.sock;
+        #proxy_pass http://127.0.0.1:3000;
         
         location ~* ^.+\.(%proxy_extensions%)$ {
             root           %docroot%;
@@ -22,9 +23,8 @@ server {
     }
 
     location @fallback {
-        #proxy_pass http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
-        proxy_pass http://127.0.0.1:3000;
-            proxy_redirect off;
+        proxy_pass http://unix:%home%/%user%/web/%domain%/nodeapp/app.sock:/$1;
+        #proxy_pass http://127.0.0.1:3000;
     }
 
     location ~ /\.ht    {return 404;}

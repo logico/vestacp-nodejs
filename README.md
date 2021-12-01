@@ -13,7 +13,6 @@ Run Node.JS web apps automatically using NGINX reverse proxy, UNIX sockets and P
 - In the control panel, select NodeJS from Proxy Template
 - If you install NVM for different version of Node script read `.nvm`, `.node-version` file from node app folder auto install it an run whith specify version
 - Load Enviroment variables from `.env` file located in same node app folder
-- Added watch mode on update of touch some file on Node folder the server automatically restart's
 
 ![VestaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
