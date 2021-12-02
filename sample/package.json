@@ -1,0 +1,26 @@
+{
+	"name": "some-name",
+	"version": "1.0.0",
+	"description": "Sample",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"serve": "npm run dev"
+	},
+	"keywords": [
+		"211",
+		"vesta",
+		"node",
+		"mp2"
+	],
+	"author": "Anthony Sychev",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"express-session": "^1.17.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.9"
+	}
+}
