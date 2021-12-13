@@ -96,3 +96,8 @@ else
     runuser -l $user -c "pm2 del $scriptName"
     rm $nodeDir/app.sock
 fi
+
+#copy pm2 logs to app folder
+echo "Copy logs to nodeapp folder"
+cp -r $home/$user/.pm2/logs/$domain-error.log $nodeDir
+cp -r $home/$user/.pm2/logs/$domain-out.log $nodeDir
