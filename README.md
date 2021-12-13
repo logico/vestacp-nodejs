@@ -5,7 +5,6 @@ This template read `.env` file, `.nvm` for Node version, and `package.json` for 
 
 ![VestaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
-
 ## Instalation
 
 ***Auto "With Script":***
@@ -18,6 +17,7 @@ This template read `.env` file, `.nvm` for Node version, and `package.json` for 
 
 ## WHERE DEPLOY MY APP?
 
+In VestaCp the user must be a enabled `bash` ssh, if set as `none` this si a cause to stack.
 Upload your app with ssh on this path: `/home/<user>/web/<domain>/nodeapp/`.
 Here you can use files `.env` with Enviroment variables, `.nvm` or `.node-version` for specify NodeJs version.
 
@@ -37,6 +37,10 @@ In your `index.js` you need run the express server or http with this parameters:
 ```
 When your app is launched script create UNIX socket file in `/home/<user>/web/<domain>/nodeapp/app.sock` is set with 0777 permisses for allow access to NGINX.
 
+## DEBUG
+
+Each launch will be copied two logs files `<domain-name>-error.log` and `<domain-name>-out.log` to the `nodeapp` folder.
+
 ## BLANK PAGES "NODE DOWN"
 
 When your app is down create simply html file in public folder `/home/<user>/web/<domain>/public_app/index.html`.
@@ -45,6 +49,7 @@ When your app is down create simply html file in public folder `/home/<user>/web
 
 * How can restart app?: Select Proxy template as `default` click save button, select NodeJs template option and click save again.
 * How I can check if my app is running?: in nodeapp folder run `ls -l` and see if exist `app.sock` file, if yes, run `runuser -l <user> -c "pm2 list"` or `runuser -l <user> -c "pm2 monit"`
+* My app is not running, why?: Check setting of user account and set `bash` ssh. 
 
 ### Samples
 
