@@ -24,4 +24,4 @@ fi
 
 
 
-cp -R ./NodeJS.* /usr/local/vesta/data/templates/web/nginx/
+cp -R ./NodeJS.* /usr/local/hestia/data/templates/web/nginx/
