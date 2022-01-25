@@ -1,9 +1,9 @@
 # HestiaCP with Node.JS support.
 
-With this repo you can run multiples NodeJs Apps at some time.
+With this repo you can run multiples NodeJS Apps at same time.
 This template read `.env` file, `.nvm` for Node version, and `package.json` for get info and auto install modules.
 
-![VestaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
+![HestiaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
 ## Spanish Explication
 https://logico.ar/blog/2019/04/20/soporte-para-aplicaciones-nodejs-en-vestacp
