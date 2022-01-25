@@ -7,7 +7,7 @@ home=$4
 docroot=$5
 
 #default script name
-mainScript="app.js"
+mainScript="src/index.js"
 nodeDir="$home/$user/web/$domain/nodeapp"
 
 mkdir $nodeDir
@@ -30,8 +30,8 @@ if [ -d "$nvmDir" ]; then
 
     echo "Needs Node version: $nodeVersion"
 
-    export NVM_DIR="/opt/nvm/"
-    source "$NVM_DIR/nvm.sh"
+    export NVM_DIR=$nvmDir
+    . "$NVM_DIR/nvm.sh"
 
     if [ ! -d "/opt/nvm/versions/node/$nodeVersion" ]; then
         echo "Install this version"
@@ -77,7 +77,7 @@ runuser -l $user -c "pm2 del $scriptName"
 #apply enviroment variables from .env file
 if [ -f "$nodeDir/.env" ]; then
     echo ".env file in folder, applying."
-    envFile=$(grep -v '^#' $nodeDir/.env | xargs | sed "s/(PORT=(.*) )//g")
+    envFile=$(grep -v '^#' $nodeDir/.env | xargs | sed "s/(PORT=(.*) )//g" | sed "s/ = /=/g")
     echo $envFile
 fi
 
