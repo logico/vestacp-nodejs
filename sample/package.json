@@ -1,5 +1,5 @@
 {
-	"name": "some-name",
+	"name": "NodeJS Sample App",
 	"version": "1.0.0",
 	"description": "Sample",
 	"main": "src/index.js",
