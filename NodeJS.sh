@@ -36,8 +36,7 @@ if [ -d "$nvmDir" ]; then
     if [ ! -d "/opt/nvm/versions/node/$nodeVersion" ]; then
         echo "Install this version"
         nvm install $nodeVersion
-
-        chmod -R 777 /opt/nvm
+        chmod -R 755 /opt/nvm
     else
         echo "Error on install Node version on NVM"
     fi
