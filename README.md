@@ -1,7 +1,7 @@
 # HestiaCP with Node.JS support.
 
 With this repo you can run multiples NodeJS Apps at same time.
-This template read `.env` file, `.nvm` for Node version, and `package.json` for get info and auto install modules.
+This template reads the `.env` file, `.nvm` for Node version, and `package.json` to get info and automatically install modules.
 
 ![HestiaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
@@ -11,7 +11,7 @@ https://logico.ar/blog/2019/04/20/soporte-para-aplicaciones-nodejs-en-vestacp
 ## Installation
 
 ***Auto "With Script":***
-* First download this Git in your `home` directory and run `chmod +x ./install.sh`, `./install.sh`. Script auto install `NVM` and `PM2` 
+* First download this Git in your `home` directory and run `chmod +x ./install.sh`, `sudo ./install.sh`. Script auto install `NVM` and `PM2` 
 
 ***Manually:***
 * Install PM2 `npm i pm2@latest -g`
