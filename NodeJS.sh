@@ -89,7 +89,7 @@ sleep 5
 
 if [ ! -f "$nodeDir/app.sock" ]; then
     echo "Allow nginx access to the socket $nodeDir/app.sock"
-    chmod 777 "$nodeDir/app.sock"
+    chmod 755 "$nodeDir/app.sock"
 else
     echo "Sock file not present disable Node app"
     runuser -l $user -c "pm2 del $scriptName"
