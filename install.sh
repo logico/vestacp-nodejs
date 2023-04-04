@@ -6,8 +6,8 @@ if ! command -v pm2 &>/dev/null; then
 fi
 
 if [ ! -f ~/.nvm/nvm.sh ]; then
-    # May need to be updated with the latest nvm release
-    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    # Get the latest nvm release
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 
     mv ~/.nvm /opt/nvm
