@@ -11,7 +11,7 @@ if [ ! -f ~/.nvm/nvm.sh ]; then
 
 
     mv ~/.nvm /opt/nvm
-    chmod -R 777 /opt/nvm
+    chmod -R 755 /opt/nvm
     
     echo "-> Add this lines to the end your ~/.bashrc file"
     echo 'export NVM_DIR="/opt/nvm"
