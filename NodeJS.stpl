@@ -20,6 +20,8 @@ server {
     gzip_buffers  4 32k;
     gzip_types    image/svg+xml svg svgz text/plain application/x-javascript text/xml text/css;
     gzip_vary on;
+    
+    include %home%/%user%/conf/web/%domain%/nginx.hsts.conf*;
 
     location / {
 
@@ -65,6 +67,10 @@ server {
     location ~ /\.git/  {return 404;}
     location ~ /\.hg/   {return 404;}
     location ~ /\.bzr/  {return 404;}
+    location ~ /\.(?!well-known\/|file) {
+      deny all;
+      return 404;
+   }
 
-    include %home%/%user%/conf/web/s%proxy_system%.%domain%.conf*;
+    include %home%/%user%/conf/web/%domain%/nginx.ssl.conf_*;
 }

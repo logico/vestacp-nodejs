@@ -1,25 +1,28 @@
-# VestaCP with Node.JS support.
+# HestiaCP with Node.JS support.
 
-With this repo you can run multiples NodeJs Apps at some time.
-This template read `.env` file, `.nvm` for Node version, and `package.json` for get info and auto install modules.
+With this repo you can run multiples NodeJS Apps at same time.
+This template reads the `.env` file, `.nvm` for Node version, and `package.json` to get info and automatically install modules.
 
-![VestaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
+![HestiaCP](https://logico.com.ar/img/2019/04/21/vestacp_proxy_setup.png)
 
-## Instalation
+## Spanish Explication
+https://logico.ar/blog/2019/04/20/soporte-para-aplicaciones-nodejs-en-vestacp
+
+## Installation
 
 ***Auto "With Script":***
-* First download this Git in your `home` directory and run `chmod +x ./install.sh`, `./install.sh`. Script auto install `NVM` and `PM2` 
+* First download this Git in your `home` directory and run `chmod +x ./install.sh`, `sudo ./install.sh`. Script auto install `NVM` and `PM2` 
 
 ***Manually:***
 * Install PM2 `npm i pm2@latest -g`
 * Install NVM see [https://nvm.sh]
-* Upload `NodeJS.tpl`, `NodeJS.stpl`, `NodeJS.sh` to `/usr/local/vesta/data/templates/web/nginx/`
+* Upload `NodeJS.tpl`, `NodeJS.stpl`, `NodeJS.sh` to `/usr/local/hestia/data/templates/web/nginx/`
 
 ## WHERE DEPLOY MY APP?
 
-In VestaCp the user must be a enabled `bash` ssh, if set as `none` this si a cause to stack.
+In HestiaCP the user must be a enabled `bash` ssh, if set as `none` this is a cause to stuck.
 Upload your app with ssh on this path: `/home/<user>/web/<domain>/nodeapp/`.
-Here you can use files `.env` with Enviroment variables, `.nvm` or `.node-version` for specify NodeJs version.
+Here you can use files `.env` with Enviroment variables, `.nvm` or `.node-version` for specify NodeJS version.
 
 In your `package.json` you can specify your index file with 
 ```js
@@ -53,7 +56,7 @@ When your app is down create simply html file in public folder `/home/<user>/web
 
 ### Samples
 
-For debug propose you can run script with this arguments `NodeJS.sh <user> <domain> 127.0.0.1 /home` full command: `/usr/local/vesta/data/templates/web/nginx/NodeJS.sh admin default 127.0.0.1 /home`
+For debug propose you can run script with this arguments `NodeJS.sh <user> <domain> 127.0.0.1 /home` full command: `/usr/local/hestia/data/templates/web/nginx/NodeJS.sh admin default 127.0.0.1 /home`
 
 * ***Remove all instances***: `runuser -l <user> -c "pm2 del all"` for admin `runuser -l admin -c "pm2 del all"`
 * ***List all instances***: `runuser -l <user> -c "pm2 list"` for admin `runuser -l admin -c "pm2 list"`

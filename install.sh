@@ -6,12 +6,12 @@ if ! command -v pm2 &>/dev/null; then
 fi
 
 if [ ! -f ~/.nvm/nvm.sh ]; then
-    # May need to be updated with the latest nvm release
-    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    # Get the latest nvm release
+    wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 
     mv ~/.nvm /opt/nvm
-    chmod -R 777 /opt/nvm
+    chmod -R 755 /opt/nvm
     
     echo "-> Add this lines to the end your ~/.bashrc file"
     echo 'export NVM_DIR="/opt/nvm"
@@ -24,4 +24,4 @@ fi
 
 
 
-cp -R ./NodeJS.* /usr/local/vesta/data/templates/web/nginx/
+cp -R ./NodeJS.* /usr/local/hestia/data/templates/web/nginx/

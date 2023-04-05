@@ -1,6 +1,8 @@
 server {
     listen      %ip%:%proxy_port%;
     server_name %domain_idn% %alias_idn%;
+    
+    include %home%/%user%/conf/web/%domain%/nginx.forcessl.conf*;
 
     error_log  /var/log/%web_system%/domains/%domain%.error.log error;
 
@@ -38,7 +40,11 @@ server {
     location ~ /\.git/  {return 404;}
     location ~ /\.hg/   {return 404;}
     location ~ /\.bzr/  {return 404;}
+    location ~ /\.(?!well-known\/|file) {
+       deny all;
+       return 404;
+    }
 
-    include %home%/%user%/conf/web/nginx.%domain%.conf*;
+    include %home%/%user%/conf/web/%domain%/nginx.conf_*;
+    
 }
-
